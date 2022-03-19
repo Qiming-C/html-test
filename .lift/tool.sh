@@ -23,6 +23,10 @@ nvm install $INSTALL_NODE_VER &> /dev/null
 nvm alias default $INSTALL_NODE_VER &> /dev/null
 nvm use default &> /dev/null
 
+pushd $SCRIPT_DIR/HTMLHint
+npm run-script build &> /dev/null
+popd
+
 
 function run(){
 	node $SCRIPT_DIR/HTMLHint/dist/cli/htmlhint.js -f json "$1" | jq '.'
